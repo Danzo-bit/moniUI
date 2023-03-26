@@ -9,3 +9,9 @@ var smallLightText = TextStyle(
     fontSize: 18,
     color: Colors.white,
     fontWeight: FontWeight.normal);
+var bodyText = TextStyle(
+  fontFamily: "Pangram",
+  fontSize: 14,
+);
+var bodyLargeText =
+    TextStyle(fontFamily: "Pangram", fontSize: 28, fontWeight: FontWeight.bold);
