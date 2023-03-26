@@ -1,4 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:moni_ui/screens/cash.dart';
+import 'package:moni_ui/screens/home.dart';
 
 import 'config/app_theme.dart';
 
@@ -14,62 +19,50 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: appTheme,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const PageController(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class PageController extends StatefulWidget {
+  const PageController({
+    super.key,
+  });
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<PageController> createState() => _PageControllerState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _PageControllerState extends State<PageController> {
+  int _currentIndex = 0;
+  List screens = const [Home(), Cash()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          widget.title,
-          style: TextStyle(fontFamily: "Pangram", color: Colors.black),
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-              style: TextStyle(
-                  fontFamily: "Pangram",
-                  fontWeight: FontWeight.w700,
-                  fontSize: 12),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(
+          selectedLabelStyle: const TextStyle(fontFamily: "Pangram"),
+          unselectedLabelStyle: const TextStyle(fontFamily: "Pangram"),
+          selectedItemColor: Colors.orange,
+          currentIndex: _currentIndex,
+          onTap: (value) => setState(() {
+                _currentIndex = value;
+              }),
+          items: [
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset("assets/home.svg",
+                    color: _currentIndex == 0
+                        ? const Color(0xFFFFAB9F)
+                        : const Color(0xFFDEDDE1)),
+                label: "Home"),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset("assets/cash.svg",
+                    color: _currentIndex == 1
+                        ? const Color(0xFFFFAB9F)
+                        : const Color(0xFFDEDDE1)),
+                label: "Cash"),
+          ]),
+      body: screens[_currentIndex],
     );
   }
 }
