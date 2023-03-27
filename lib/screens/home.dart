@@ -506,7 +506,28 @@ class _HomeState extends State<Home> {
                           fontWeight: FontWeight.bold,
                           color: Color(0xffFC4625)),
                     ),
-                    // !todo: add slide indicator
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Row(
+                      children: List.generate(
+                          5,
+                          (index) => Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 2.0),
+                                child: AnimatedContainer(
+                                  curve: Curves.easeIn,
+                                  duration: Duration(milliseconds: 500),
+                                  height: 10,
+                                  width: index == 1 ? 21 : 10,
+                                  decoration: BoxDecoration(
+                                      color: index == 1
+                                          ? Color(0xffEC642C)
+                                          : Color.fromARGB(255, 209, 210, 214),
+                                      borderRadius: BorderRadius.circular(10)),
+                                ),
+                              )),
+                    )
                   ],
                 ),
               ),
