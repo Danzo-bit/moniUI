@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../config/text_themes.dart';
+import '../widgets/transactions_card.dart';
+import '../widgets/wallet_action_card.dart';
 
 class Cash extends StatelessWidget {
   const Cash({super.key});
@@ -26,15 +28,16 @@ class Cash extends StatelessWidget {
               children: [
                 Text(
                   "Available Balance",
-                  style: smallText,
+                  style: styleW18.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white.withOpacity(.7)),
                 ),
                 SizedBox(
                   width: 12,
                 ),
-                Icon(
-                  Icons.remove_red_eye_outlined,
-                  color: Colors.white,
-                ),
+                Icon(Icons.remove_red_eye_outlined,
+                    color: Colors.white.withOpacity(.7)),
                 Spacer(),
                 Icon(
                   Icons.more_vert,
@@ -45,9 +48,19 @@ class Cash extends StatelessWidget {
             SizedBox(
               height: 4,
             ),
-            Text(
-              "₦ 234,430.00",
-              style: bodyLargeText.copyWith(color: Colors.white),
+            Row(
+              children: [
+                Text("₦ 234,430",
+                    style: TextStyle(
+                      fontSize: 36,
+                      color: Colors.white,
+                    )),
+                Text(".00",
+                    style: TextStyle(
+                      fontSize: 36,
+                      color: Color(0xff737682),
+                    )),
+              ],
             ),
             SizedBox(
               height: 12,
@@ -55,7 +68,7 @@ class Cash extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
                       color: Color(0xffFC4625)),
@@ -71,7 +84,7 @@ class Cash extends StatelessWidget {
                       ),
                       Text(
                         "Add Money",
-                        style: smallText,
+                        style: styleW12,
                       ),
                     ],
                   ),
@@ -80,7 +93,7 @@ class Cash extends StatelessWidget {
                   width: 12,
                 ),
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
                       color: Colors.white.withOpacity(.2)),
@@ -96,7 +109,7 @@ class Cash extends StatelessWidget {
                       ),
                       Text(
                         "Share your account",
-                        style: smallText,
+                        style: styleW12,
                       ),
                     ],
                   ),
@@ -108,120 +121,42 @@ class Cash extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        height: 65,
-                        decoration: BoxDecoration(
-                            color: Color(0xffF0F1F5),
-                            borderRadius: BorderRadius.circular(35)),
-                        child: Image.asset("assets/Money.png"),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "Add money",
-                        style: smallText,
-                      )
-                    ],
+                  WalletActionCard(
+                    asset: "assets/Money.png",
+                    action: "Add money",
+                    isWhiteText: true,
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        height: 65,
-                        decoration: BoxDecoration(
-                            color: Color(0xffF0F1F5),
-                            borderRadius: BorderRadius.circular(35)),
-                        child: Image.asset("assets/Icon.png"),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "Send money",
-                        style: smallText,
-                      )
-                    ],
+                  WalletActionCard(
+                    asset: "assets/Icon.png",
+                    action: "Send money",
+                    isWhiteText: true,
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(18),
-                        height: 65,
-                        decoration: BoxDecoration(
-                            color: Color(0xffF0F1F5),
-                            borderRadius: BorderRadius.circular(35)),
-                        child: Image.asset(
-                          "assets/phone.png",
-                          width: 32,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "Buy airtime",
-                        style: smallText,
-                      )
-                    ],
+                  WalletActionCard(
+                    asset: "assets/phone.png",
+                    action: "Buy airtime",
+                    isWhiteText: true,
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        height: 65,
-                        decoration: BoxDecoration(
-                            color: Color(0xffF0F1F5),
-                            borderRadius: BorderRadius.circular(35)),
-                        child: Image.asset("assets/grid.png"),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "Pay bills",
-                        style: smallText,
-                      )
-                    ],
+                  WalletActionCard(
+                    asset: "assets/grid.png",
+                    action: "Pay bills",
+                    isWhiteText: true,
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        height: 65,
-                        decoration: BoxDecoration(
-                            color: Color(0xffF0F1F5),
-                            borderRadius: BorderRadius.circular(35)),
-                        child: Image.asset("assets/Money.png"),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "Add money",
-                        style: smallText,
-                      )
-                    ],
+                  WalletActionCard(
+                    asset: "assets/finger.png",
+                    action: "Buy data",
+                    isWhiteText: true,
                   ),
                   SizedBox(
                     width: 20,
@@ -242,7 +177,7 @@ class Cash extends StatelessWidget {
                 children: [
                   Text(
                     "Transactions",
-                    style: bodyLargeText,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
                   Icon(Icons.chevron_right)
@@ -253,550 +188,60 @@ class Cash extends StatelessWidget {
               ),
               Text(
                 "Today",
-                style: bodyText,
               ),
               SizedBox(
                 height: 20,
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
+              TransactionsCard(
+                title: "Transferring",
+                message: "Ojo Oluwaleke Oluwakikiii",
+                amount: "₦ 300,000",
+                status: "In-progress",
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
+              TransactionsCard(
+                title: "Money received",
+                message: "Kennedy Obi ",
+                amount: "₦ 300,000",
+                date: "Dec 20th at 02:34PM",
+                isGreenBg: true,
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
+              TransactionsCard(
+                title: "Repaid loan",
+                message: "Rent Now Pay Later",
+                amount: "₦ 300,000",
+                status: "Failed",
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
+              TransactionsCard(
+                title: "Savings top up",
+                message: "Naira reserve",
+                amount: "₦ 300,000",
+                date: "Dec 20th at 02:34PM",
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
+              TransactionsCard(
+                title: "Disbursed loan",
+                message: "Agric. loans",
+                amount: "₦ 300,000",
+                date: "Dec 20th at 02:34PM",
+                isGreenBg: true,
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
+              TransactionsCard(
+                title: "Money sent",
+                message: "Kennedy Obi",
+                amount: "₦ 300,000",
+                date: "Dec 20th at 02:34PM",
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
+              TransactionsCard(
+                title: "Airtime top up",
+                message: "MTN airtime",
+                amount: "₦ 300,000",
+                date: "Dec 20th at 02:34PM",
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
-              ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
-              ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.arrow_upward,
-                          size: 18,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Title",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "subtitle",
-                            style: bodyText,
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "₦ 300,000",
-                            style: bodyText,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "In-Progress",
-                            style: bodyText,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Divider()
-                ],
+              TransactionsCard(
+                title: "Savings withdrawal",
+                message: "Naira reserve",
+                amount: "₦ 300,000",
+                date: "Dec 20th at 02:34PM",
+                isGreenBg: true,
               ),
             ],
           ),

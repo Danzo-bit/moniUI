@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:moni_ui/config/text_themes.dart';
 
+import '../widgets/feeds_card.dart';
+import '../widgets/offers_card.dart';
+import '../widgets/wallet_action_card.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -68,11 +72,13 @@ class _HomeState extends State<Home> {
                                   children: [
                                     Text(
                                       "Good afternoon,",
-                                      style: smallLightText,
+                                      style: styleW18.copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300),
                                     ),
                                     Text(
                                       "@yoncee",
-                                      style: smallText,
+                                      style: styleW18,
                                     )
                                   ],
                                 ),
@@ -94,7 +100,7 @@ class _HomeState extends State<Home> {
                                       ),
                                       Text(
                                         "Cashback",
-                                        style: smallText,
+                                        style: styleW12,
                                       ),
                                     ],
                                   ),
@@ -139,7 +145,7 @@ class _HomeState extends State<Home> {
                                   ),
                                   Text(
                                     "@yoncee",
-                                    style: smallText,
+                                    style: styleW18,
                                   ),
                                   Spacer(),
                                   Container(
@@ -159,7 +165,7 @@ class _HomeState extends State<Home> {
                                         ),
                                         Text(
                                           "Cashback",
-                                          style: smallText,
+                                          style: styleW12,
                                         ),
                                       ],
                                     ),
@@ -190,9 +196,15 @@ class _HomeState extends State<Home> {
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Row(children: [
+                  SvgPicture.asset("assets/suitcase.svg"),
+                  SizedBox(
+                    width: 4,
+                  ),
                   Text(
                     "Get A business account",
-                    style: bodyText,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Spacer(),
                   Icon(Icons.expand_more)
@@ -211,134 +223,66 @@ class _HomeState extends State<Home> {
                     Row(children: [
                       Text(
                         "Naira Account Balance",
-                        style: bodyText,
+                        style: TextStyle(color: Color(0xff737682)),
                       ),
                       Spacer(),
-                      Icon(Icons.visibility_outlined)
+                      Icon(
+                        Icons.visibility_outlined,
+                        color: Color(0xff737682),
+                      )
                     ]),
-                    Text(
-                      "₦ 234,430.00",
-                      style: bodyLargeText,
+                    Row(
+                      children: [
+                        Text(
+                          "₦ 234,430",
+                          style: TextStyle(
+                              fontSize: 28, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          ".00",
+                          style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff737682)),
+                        )
+                      ],
                     ),
                     SizedBox(
                       height: 150,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                height: 65,
-                                decoration: BoxDecoration(
-                                    color: Color(0xffF0F1F5),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Image.asset("assets/Money.png"),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                "Add money",
-                                style: bodyText,
-                              )
-                            ],
+                          WalletActionCard(
+                            asset: "assets/Money.png",
+                            action: "Add money",
                           ),
                           SizedBox(
                             width: 20,
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                height: 65,
-                                decoration: BoxDecoration(
-                                    color: Color(0xffF0F1F5),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Image.asset("assets/Icon.png"),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                "Send money",
-                                style: bodyText,
-                              )
-                            ],
+                          WalletActionCard(
+                            asset: "assets/Icon.png",
+                            action: "Send money",
                           ),
                           SizedBox(
                             width: 20,
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(18),
-                                height: 65,
-                                decoration: BoxDecoration(
-                                    color: Color(0xffF0F1F5),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Image.asset(
-                                  "assets/phone.png",
-                                  width: 32,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                "Buy airtime",
-                                style: bodyText,
-                              )
-                            ],
+                          WalletActionCard(
+                            asset: "assets/phone.png",
+                            action: "Buy airtime",
                           ),
                           SizedBox(
                             width: 20,
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                height: 65,
-                                decoration: BoxDecoration(
-                                    color: Color(0xffF0F1F5),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Image.asset("assets/grid.png"),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                "Pay bills",
-                                style: bodyText,
-                              )
-                            ],
+                          WalletActionCard(
+                            asset: "assets/grid.png",
+                            action: "Pay bills",
                           ),
                           SizedBox(
                             width: 20,
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                height: 65,
-                                decoration: BoxDecoration(
-                                    color: Color(0xffF0F1F5),
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Image.asset("assets/Money.png"),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                "Add money",
-                                style: bodyText,
-                              )
-                            ],
+                          WalletActionCard(
+                            asset: "assets/finger.png",
+                            action: "Buy data",
                           ),
                           SizedBox(
                             width: 20,
@@ -377,13 +321,14 @@ class _HomeState extends State<Home> {
                               children: [
                                 Text(
                                   "Create a savings plan",
-                                  style: bodyText,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   height: 2,
                                 ),
-                                Text("Save for your lifestyle",
-                                    style: bodyText),
+                                Text(
+                                  "Save for your lifestyle",
+                                ),
                               ],
                             ),
                             Spacer(),
@@ -438,13 +383,14 @@ class _HomeState extends State<Home> {
                               children: [
                                 Text(
                                   "Get a Moni loan",
-                                  style: bodyText,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   height: 2,
                                 ),
-                                Text("Get the support you need",
-                                    style: bodyText),
+                                Text(
+                                  "Get the support you need",
+                                ),
                               ],
                             ),
                             Spacer(),
@@ -514,21 +460,23 @@ class _HomeState extends State<Home> {
                   children: [
                     Text(
                       "Do More",
-                      style: bodyText,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     SizedBox(
                       height: 12,
                     ),
                     Text(
                       "Set up your passcode and enable biometrics to sign in with one tap",
-                      style: bodyText,
                     ),
                     SizedBox(
                       height: 12,
                     ),
                     Text(
                       "Complete setup",
-                      style: bodyText,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xffFC4625)),
                     ),
                     // !todo: add slide indicator
                   ],
@@ -548,7 +496,8 @@ class _HomeState extends State<Home> {
                       children: [
                         Text(
                           "My offers",
-                          style: bodyLargeText,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                         Spacer(),
                         Icon(Icons.chevron_right)
@@ -562,178 +511,29 @@ class _HomeState extends State<Home> {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          Column(
-                            children: [
-                              Container(
-                                height: 105,
-                                width: 164,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20)),
-                                    color: Color(0xffF6F6F9),
-                                    image: DecorationImage(
-                                        alignment: Alignment.topCenter,
-                                        fit: BoxFit.fill,
-                                        image:
-                                            AssetImage("assets/handtray.png"))),
-                              ),
-                              Container(
-                                height: 95,
-                                width: 164,
-                                decoration: BoxDecoration(
-                                  // borderRadius: BorderRadius.circular(18),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(18),
-                                      bottomRight: Radius.circular(18)),
-                                  color: Color(0xffF6F6F9),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Reserve plan",
-                                        style: bodyText,
-                                      ),
-                                      SizedBox(
-                                        height: 4,
-                                      ),
-                                      Text(
-                                        "Create a reserve plan",
-                                        style: bodyText,
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        "Create plan",
-                                        style: bodyText,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                          OffersCard(
+                            actionText: "Create plan",
+                            asset: "assets/handtray.png",
+                            message: "Create a reserve plan",
+                            title: "Reserve plan",
                           ),
                           SizedBox(
                             width: 8,
                           ),
-                          Column(
-                            children: [
-                              Container(
-                                height: 105,
-                                width: 164,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20)),
-                                    color: Color(0xffF6F6F9),
-                                    image: DecorationImage(
-                                        alignment: Alignment.topCenter,
-                                        fit: BoxFit.fill,
-                                        image: AssetImage("assets/gang.png"))),
-                              ),
-                              Container(
-                                height: 95,
-                                width: 164,
-                                decoration: BoxDecoration(
-                                  // borderRadius: BorderRadius.circular(18),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(18),
-                                      bottomRight: Radius.circular(18)),
-                                  color: Color(0xffF6F6F9),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Travel deals",
-                                        style: bodyText,
-                                      ),
-                                      SizedBox(
-                                        height: 4,
-                                      ),
-                                      Text(
-                                        "20% off flights deals",
-                                        style: bodyText,
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        "Get deal",
-                                        style: bodyText,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                          OffersCard(
+                            actionText: "Get deal",
+                            asset: "assets/gang.png",
+                            message: "20% off flights deals",
+                            title: "Travel deals",
                           ),
                           SizedBox(
                             width: 8,
                           ),
-                          Column(
-                            children: [
-                              Container(
-                                height: 105,
-                                width: 164,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20)),
-                                    color: Color(0xffF6F6F9),
-                                    image: DecorationImage(
-                                        alignment: Alignment.topCenter,
-                                        fit: BoxFit.fill,
-                                        image:
-                                            AssetImage("assets/handtray.png"))),
-                              ),
-                              Container(
-                                height: 95,
-                                width: 164,
-                                decoration: BoxDecoration(
-                                  // borderRadius: BorderRadius.circular(18),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(18),
-                                      bottomRight: Radius.circular(18)),
-                                  color: Color(0xffF6F6F9),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Reserve plan",
-                                        style: bodyText,
-                                      ),
-                                      SizedBox(
-                                        height: 4,
-                                      ),
-                                      Text(
-                                        "Create a reserve plan",
-                                        style: bodyText,
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        "Create plan",
-                                        style: bodyText,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                          OffersCard(
+                            actionText: "Register",
+                            asset: "assets/handtray.png",
+                            message: "10% off subscription deals",
+                            title: "Netflix discount",
                           ),
                         ],
                       ),
@@ -757,7 +557,8 @@ class _HomeState extends State<Home> {
                         children: [
                           Text(
                             "My feed",
-                            style: bodyLargeText,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                           Spacer(),
                           Icon(Icons.chevron_right)
@@ -769,265 +570,53 @@ class _HomeState extends State<Home> {
                     ),
                     Column(
                       children: [
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 35,
-                                  ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Victor Adedini ",
-                                              style: bodyText,
-                                            ),
-                                            Text(
-                                              "@Vicktor",
-                                              style: bodyText,
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Text(
-                                          "Victor is inviting you to join “the lagos ballers” tribe group 💰",
-                                          style: bodyText,
-                                          overflow: TextOverflow.clip,
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Review Request",
-                                              style: bodyText,
-                                            ),
-                                            Spacer(),
-                                            Text(
-                                              "3:45 PM Nov 4",
-                                              style: bodyText,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Divider()
-                          ],
+                        FeedsCard(
+                          asset: "assets/vicktor.png",
+                          title: "Victor Adedini",
+                          userName: "@Vicktor",
+                          message:
+                              "Victor is inviting you to join “the lagos ballers” tribe group 💰",
+                          actionText: "Review Request",
+                          time: "3:45 PM Nov 4",
                         ),
-                        SizedBox(
-                          height: 18,
+                        FeedsCard(
+                          asset: "assets/profile-update.png",
+                          title: "Profile update",
+                          message: "Your address verification is now complete.",
+                          time: "3:45 Nov 4",
                         ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 35,
-                                  ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Victor Adedini ",
-                                              style: bodyText,
-                                            ),
-                                            Text(
-                                              "@Vicktor",
-                                              style: bodyText,
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Text(
-                                          "Victor is inviting you to join “the lagos ballers” tribe group 💰",
-                                          style: bodyText,
-                                          overflow: TextOverflow.clip,
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Review Request",
-                                              style: bodyText,
-                                            ),
-                                            Spacer(),
-                                            Text(
-                                              "3:45 PM Nov 4",
-                                              style: bodyText,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Divider()
-                          ],
+                        FeedsCard(
+                          asset: "assets/ojo.png",
+                          title: "Oluwaleke P Ojo",
+                          userName: "@fixer",
+                          message:
+                              "Oluwaleke sent you ₦10,000 for “Weekend vibes and ishallah” 💰",
+                          actionText: "Review details",
+                          time: "3:45 PM Nov 4",
                         ),
-                        SizedBox(
-                          height: 18,
+                        FeedsCard(
+                          asset: "assets/toyin.png",
+                          title: "Toyin Muminatu ",
+                          userName: "@tosties",
+                          message:
+                              "Toyin just saved N34,000 on your afronation tribe",
+                          actionText: "View tribe",
+                          time: "3:45 Nov 4",
                         ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 35,
-                                  ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Victor Adedini ",
-                                              style: bodyText,
-                                            ),
-                                            Text(
-                                              "@Vicktor",
-                                              style: bodyText,
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Text(
-                                          "Victor is inviting you to join “the lagos ballers” tribe group 💰",
-                                          style: bodyText,
-                                          overflow: TextOverflow.clip,
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Review Request",
-                                              style: bodyText,
-                                            ),
-                                            Spacer(),
-                                            Text(
-                                              "3:45 PM Nov 4",
-                                              style: bodyText,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Divider()
-                          ],
+                        FeedsCard(
+                          title: "Oluwabenny Adedini",
+                          message:
+                              "Oluwabenny sent you ₦10,000 for “Weekend vibes and ishallah” 💰",
+                          actionText: "View balance",
+                          time: "3:45 Nov 4",
                         ),
-                        SizedBox(
-                          height: 18,
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 35,
-                                  ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Victor Adedini ",
-                                              style: bodyText,
-                                            ),
-                                            Text(
-                                              "@Vicktor",
-                                              style: bodyText,
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Text(
-                                          "Victor is inviting you to join “the lagos ballers” tribe group 💰",
-                                          style: bodyText,
-                                          overflow: TextOverflow.clip,
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Review Request",
-                                              style: bodyText,
-                                            ),
-                                            Spacer(),
-                                            Text(
-                                              "3:45 PM Nov 4",
-                                              style: bodyText,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Divider()
-                          ],
-                        ),
-                        SizedBox(
-                          height: 18,
+                        FeedsCard(
+                          asset: "assets/handcoin.png",
+                          title: "Moni Loans",
+                          message:
+                              "Your loan application was reviewed but wasn't approved.",
+                          actionText: "See more",
+                          time: "3:45 Nov 4",
                         ),
                       ],
                     ),
