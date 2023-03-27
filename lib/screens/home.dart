@@ -562,27 +562,179 @@ class _HomeState extends State<Home> {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          Container(
-                            height: 105,
-                            width: 164,
-                            color: Colors.grey,
+                          Column(
+                            children: [
+                              Container(
+                                height: 105,
+                                width: 164,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20)),
+                                    color: Color(0xffF6F6F9),
+                                    image: DecorationImage(
+                                        alignment: Alignment.topCenter,
+                                        fit: BoxFit.fill,
+                                        image:
+                                            AssetImage("assets/handtray.png"))),
+                              ),
+                              Container(
+                                height: 95,
+                                width: 164,
+                                decoration: BoxDecoration(
+                                  // borderRadius: BorderRadius.circular(18),
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(18),
+                                      bottomRight: Radius.circular(18)),
+                                  color: Color(0xffF6F6F9),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Reserve plan",
+                                        style: bodyText,
+                                      ),
+                                      SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        "Create a reserve plan",
+                                        style: bodyText,
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        "Create plan",
+                                        style: bodyText,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           SizedBox(
                             width: 8,
                           ),
-                          Container(
-                            height: 105,
-                            width: 164,
-                            color: Colors.grey,
+                          Column(
+                            children: [
+                              Container(
+                                height: 105,
+                                width: 164,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20)),
+                                    color: Color(0xffF6F6F9),
+                                    image: DecorationImage(
+                                        alignment: Alignment.topCenter,
+                                        fit: BoxFit.fill,
+                                        image: AssetImage("assets/gang.png"))),
+                              ),
+                              Container(
+                                height: 95,
+                                width: 164,
+                                decoration: BoxDecoration(
+                                  // borderRadius: BorderRadius.circular(18),
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(18),
+                                      bottomRight: Radius.circular(18)),
+                                  color: Color(0xffF6F6F9),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Travel deals",
+                                        style: bodyText,
+                                      ),
+                                      SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        "20% off flights deals",
+                                        style: bodyText,
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        "Get deal",
+                                        style: bodyText,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           SizedBox(
                             width: 8,
                           ),
-                          Container(
-                            height: 105,
-                            width: 164,
-                            color: Colors.grey,
-                          )
+                          Column(
+                            children: [
+                              Container(
+                                height: 105,
+                                width: 164,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20)),
+                                    color: Color(0xffF6F6F9),
+                                    image: DecorationImage(
+                                        alignment: Alignment.topCenter,
+                                        fit: BoxFit.fill,
+                                        image:
+                                            AssetImage("assets/handtray.png"))),
+                              ),
+                              Container(
+                                height: 95,
+                                width: 164,
+                                decoration: BoxDecoration(
+                                  // borderRadius: BorderRadius.circular(18),
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(18),
+                                      bottomRight: Radius.circular(18)),
+                                  color: Color(0xffF6F6F9),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Reserve plan",
+                                        style: bodyText,
+                                      ),
+                                      SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        "Create a reserve plan",
+                                        style: bodyText,
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        "Create plan",
+                                        style: bodyText,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -619,10 +771,62 @@ class _HomeState extends State<Home> {
                       children: [
                         Column(
                           children: [
-                            Container(
-                              height: 300,
-                              width: MediaQuery.of(context).size.width,
-                              color: Colors.green[50],
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 35,
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Victor Adedini ",
+                                              style: bodyText,
+                                            ),
+                                            Text(
+                                              "@Vicktor",
+                                              style: bodyText,
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          "Victor is inviting you to join “the lagos ballers” tribe group 💰",
+                                          style: bodyText,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Review Request",
+                                              style: bodyText,
+                                            ),
+                                            Spacer(),
+                                            Text(
+                                              "3:45 PM Nov 4",
+                                              style: bodyText,
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                             Divider()
                           ],
@@ -632,10 +836,62 @@ class _HomeState extends State<Home> {
                         ),
                         Column(
                           children: [
-                            Container(
-                              height: 300,
-                              width: MediaQuery.of(context).size.width,
-                              color: Colors.green[50],
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 35,
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Victor Adedini ",
+                                              style: bodyText,
+                                            ),
+                                            Text(
+                                              "@Vicktor",
+                                              style: bodyText,
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          "Victor is inviting you to join “the lagos ballers” tribe group 💰",
+                                          style: bodyText,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Review Request",
+                                              style: bodyText,
+                                            ),
+                                            Spacer(),
+                                            Text(
+                                              "3:45 PM Nov 4",
+                                              style: bodyText,
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                             Divider()
                           ],
@@ -645,17 +901,134 @@ class _HomeState extends State<Home> {
                         ),
                         Column(
                           children: [
-                            Container(
-                              height: 300,
-                              width: MediaQuery.of(context).size.width,
-                              color: Colors.green[50],
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 35,
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Victor Adedini ",
+                                              style: bodyText,
+                                            ),
+                                            Text(
+                                              "@Vicktor",
+                                              style: bodyText,
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          "Victor is inviting you to join “the lagos ballers” tribe group 💰",
+                                          style: bodyText,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Review Request",
+                                              style: bodyText,
+                                            ),
+                                            Spacer(),
+                                            Text(
+                                              "3:45 PM Nov 4",
+                                              style: bodyText,
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                             Divider()
                           ],
                         ),
                         SizedBox(
                           height: 18,
-                        )
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 35,
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Victor Adedini ",
+                                              style: bodyText,
+                                            ),
+                                            Text(
+                                              "@Vicktor",
+                                              style: bodyText,
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          "Victor is inviting you to join “the lagos ballers” tribe group 💰",
+                                          style: bodyText,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Review Request",
+                                              style: bodyText,
+                                            ),
+                                            Spacer(),
+                                            Text(
+                                              "3:45 PM Nov 4",
+                                              style: bodyText,
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Divider()
+                          ],
+                        ),
+                        SizedBox(
+                          height: 18,
+                        ),
                       ],
                     ),
                   ],
